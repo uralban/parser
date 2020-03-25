@@ -41,7 +41,11 @@
 				continue;
 			}
 			if ($_POST['itemToParse'] == 'https://ru.wikipedia.org'){
-				echo "<a href=\"https://ru.wikipedia.org".$element->href."\" target=\"_blank\">".$element->plaintext.'</a><br>';
+				if (substr($element->href,0,4) == 'http' || substr($element->href,0,2) == '//'){
+					echo "<a href=\"".$element->href."\" target=\"_blank\">".$element->plaintext.'</a><br>';
+				} else {
+					echo "<a href=\"https://ru.wikipedia.org".$element->href."\" target=\"_blank\">".$element->plaintext.'</a><br>';
+				}
 			} else {
 				echo "<a href=\"".$element->href."\" target=\"_blank\">".$element->plaintext.'</a><br>';
 			}
